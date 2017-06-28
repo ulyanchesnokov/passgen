@@ -1,2 +1,0 @@
-# passgen
-Password Generator

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Password Generator</title>
+	<style>
+		body {
+			margin: 50px;
+			background-color: #efefef;
+			font-family: Robot, Arial, sans-serif;
+			font-size: 18px;
+		}
+	</style>
+	<script async src="passgen.js"></script>
+</head>
+
+<body>
+	<h1>Password Generator</h1>
+	<h3>Что это такое?</h3>
+	<p>Чтобы ваш аккаунт не взломали путем подбора пароля, пароль должен быть сложным.
+		<br> Этот генератор создает подходящие пароли любого размера.</p>
+	<h3>Как им пользоваться?</h3>
+	<p>Выберите параметры пароля, его длину и количество вариантов и нажмите кнопку «Создать пароль».</p>
+	<form name="pass" method="POST" action="">
+		<p>Символы:
+			<input type="text" name="chars" value="1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz" style="width:300px;">
+		</p>
+		<script>
+			function Check() {
+				pass.chars.value = '';
+				if (pass.sign.checked) pass.chars.value = pass.chars.value + '!"№;%:?*()_+=-~/\\<>,.[]{}';
+				if (pass.num.checked) pass.chars.value = pass.chars.value + '1234567890';
+				if (pass.caps.checked) pass.chars.value = pass.chars.value + 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+				if (pass.lower.checked) pass.chars.value = pass.chars.value + 'abcdefghijklmnopqrstuvwxyz';
+			}
+		</script>
+		<p>
+			<input type="checkbox" name="lower" onclick="Check();" checked> Маленькие буквы&ensp;
+			<input type="checkbox" name="caps" onclick="Check();" checked> Заглавные буквы&ensp;
+			<input type="checkbox" name="num" onclick="Check();" checked> Цифры&ensp;
+			<input type="checkbox" name="sign" onclick="Check();"> Символы</p>
+		<p>
+			<input type=text name=length size=3 value=12> Длина пароля&ensp;
+			<input type=t ext name=c ount size=3 value=4> Количество паролей&ensp;
+			<input type="button" value="Создать пароль" onclick="
+		document.all.result.innerHTML='';
+		c = pass.count.value;
+		for (i=1;i<=c;i++)
+		document.all.result.innerHTML+='<samp>'+PassGen(pass.chars.value,pass.length.value)+'</samp><br>';"> </form>
+	<p ID="result"></p>
+	<br>
+	<p><small><strong><a href="bitcoin:16k3u66tbC59pTUFh4CfTg6vJNzH4jhZ2Y&message=PassGenDonation">Помочь проекту</a></strong>&ensp;|&ensp;<strong><a href="mailto:passgen@riseup.net?subject=PassGenFeedback">Обратная связь</a></strong></small></p>
+
+</html>
