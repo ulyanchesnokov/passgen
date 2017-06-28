@@ -1,0 +1,1 @@
+function PassGenCount(e,r,t){for(document.write("<ol>"),j=0;j<t;j++)document.write("<li><samp>"+PassGen(e,r)+"</samp>");document.write("</ol>")}function PassGen(e,r){var a,n,t="";for(n=1;r>=n;n++)a=Math.floor(Math.random()*e.length),t+=e.substring(a,a+1);return t=t.replace("&","&amp;"),t=t.replace(">","&gt;"),t=t.replace("<","&lt;")}
